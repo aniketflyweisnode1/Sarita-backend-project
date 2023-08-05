@@ -1,6 +1,6 @@
 const CostSummary = require("../models/costSummary.model");
 const ChargeModel = require("../models/charges.model");
-const ShippingOrder = require("../models/ShippingOrder");
+const ShippingOrder = require("../models/shippingOrder");
 
 exports.createCostSummary = async (req, res) => {
     try {

@@ -1,5 +1,5 @@
 const Booking = require("../models/booking.model");
-const ShippingOrder = require("../models/ShippingOrder");
+const ShippingOrder = require("../models/shippingOrder");
 const Items = require("../models/bannedAndRestricted.model");
 const Coupon = require("../models/discount.model");
 const CostSummary = require("../models/costSummary.model");
