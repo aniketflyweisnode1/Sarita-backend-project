@@ -47,7 +47,7 @@ require("./routes/cost.route")(app);
 require("./routes/package.route")(app);
 require("./routes/assignMen.route")(app);
 require("./routes/dimension.route")(app);
-require("./routes/pickUpSchedule.route")(app);
+require("./routes/pickupSchedule.route")(app);
 require("./routes/booking.route")(app);
 require("./routes/payment.route")(app);
 require("./routes/terms.route")(app);
