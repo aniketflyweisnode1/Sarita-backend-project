@@ -24,7 +24,7 @@ require("./routes/admin.route")(app);
 //packages
 require("./routes/package.route")(app);
 require("./routes/address.route")(app);
-require("./routes/shipping.routes")(app);
+// require("./routes/shipping.routes")(app);
 require("./routes/items.route")(app);
 require("./routes/legal.routes")(app);
 require("./routes/privacy.route")(app);
