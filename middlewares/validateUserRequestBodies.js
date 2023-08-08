@@ -57,20 +57,7 @@ const signUpBody = async (req, res, next) => {
     //   });
     // }
 
-    if (!req.body.password) {
-      return res.status(400).send({
-        message: "Failed! Password is not provided",
-      });
-    }
-
-    if (!isValidPassword(req.body.password)) {
-      return res.status(400).send({
-        message:
-          "Failed! Not a valid password. Password must be 10 to 25 characters containing at least one lowercase letter, one uppercase letter, one numeric digit, and one special character",
-      });
-    }
-
-    if (!req.body.DOB) {
+    if (!req.body.dateOfBirth) {
       return res.status(400).send({
         message: "Failed! Date of Birth is not provided",
       });
@@ -80,9 +67,9 @@ const signUpBody = async (req, res, next) => {
         message: "Failed! Country is not provided",
       });
     }
-    next();
 
-  } catch (err){
+    next();
+  } catch (err) {
     console.log(
       "#### Error while validating sign-up request body ##### ",
       err.message
