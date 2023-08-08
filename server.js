@@ -1,7 +1,8 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-const mongoose = require("mongoose");
+const dbConnect = require("./configs/db.config");
+dbConnect();
 require("dotenv").config();
 var compression = require("compression");
 const app = express();
@@ -53,16 +54,16 @@ require("./routes/payment.route")(app);
 require("./routes/terms.route")(app);
 require("./routes/privacy.route")(app);
 app.use("/api/v1/", require("./routes/banner.route"));
-mongoose.Promise = global.Promise;
-mongoose.set("strictQuery", false);
-// Connect MongoDB at default port 27017.
-mongoose.connect(process.env.DB_URL, (err) => {
-  if (!err) {
-    console.log("MongoDB Connection Succeeded.");
-  } else {
-    console.log("Error in DB connection: " + err);
-  }
-});
+// mongoose.Promise = global.Promise;
+// mongoose.set("strictQuery", false);
+// // Connect MongoDB at default port 27017.
+// mongoose.connect(process.env.DB_URL, (err) => {
+//   if (!err) {
+//     console.log("MongoDB Connection Succeeded.");
+//   } else {
+//     console.log("Error in DB connection: " + err);
+//   }
+// });
 
 app.listen(process.env.PORT, () => {
   console.log(`Listening on port ${process.env.PORT}!`);

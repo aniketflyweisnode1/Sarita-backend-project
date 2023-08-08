@@ -8,34 +8,33 @@ const LoginModel = require("../models/login.model");
 const ObjectId = require("mongoose").Types.ObjectId;
 
 exports.signUp = async (req, res) => {
+  const { firstName, lastName, email, password, phone, DOB, country } = req.body;
+
+  const userObj = {
+    firstName,
+    lastName,
+    email,
+    password: bcrypt.hash(password, 8),
+    phone,
+    DOB,
+    country,
+  };
+
   try {
-    const userIdReq = await LoginModel.findById(req.user._id);
-
-    const userObj = {
-      userId: req.user._id,
-      firstName: req.body.firstName,
-      lastName: req.body.lastName,
-      email: req.body.email,
-      password: bcrypt.hashSync(req.body.password, 8),
-      phone: parseInt(userIdReq.phone),
-      DOB: req.body.dateOfBirth,
-      country: req.body.country,
-    };
-
-    const userCreated = await User.create(userObj);
-
-    console.log(
-      `#### ${userCreated.firstName} ${userCreated.lastName} created ####`
-    );
-    console.log(userCreated);
-    res.status(201).send({
-      message: "signed up successfully",
-      data: userCreated,
-    });
+    const findUser = await User.findOne({ email });
+    if (!findUser) {
+      const newUser = await User.create(userObj);
+      res.json({
+        message: "signed up successfully",
+        data: newUser,
+      });
+    } else {
+      throw new Error("User Already Exists");
+    }
   } catch (err) {
-    console.log("#### error while user sign up #### ", err.message);
-    res.status(500).send({
+    res.status(500).json({
       message: "Internal server error while creating user",
+      error: err.message,
     });
   }
 };
