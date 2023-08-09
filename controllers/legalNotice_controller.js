@@ -75,6 +75,7 @@ exports.DeleteLegal = async (req, res) => {
     res.status(400).send({ message: err.message });
   }
 };
+
 exports.getLegalById = async (req, res) => {
   try {
     if (!ObjectId.isValid(req.params.id)) {

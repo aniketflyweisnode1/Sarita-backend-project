@@ -63,7 +63,6 @@ exports.create = async (req, res) => {
     });
   }
 };
-
 exports.update = async (req, res) => {
   try {
     const data = {
@@ -116,7 +115,6 @@ exports.update = async (req, res) => {
     });
   }
 };
-
 exports.delete = async (req, res) => {
   try {
     const result = await State.findByIdAndDelete(req.params.id);
@@ -156,7 +154,6 @@ exports.get = async (req, res) => {
     res.status(500).send({ msg: "internal server error", error: err.message });
   }
 };
-
 exports.getById = async (req, res) => {
   try {
     const result = await PinCode.findById(req.params.id);

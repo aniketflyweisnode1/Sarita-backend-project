@@ -75,6 +75,7 @@ exports.DeleteEndUser = async (req, res) => {
     res.status(400).send({ message: err.message });
   }
 };
+
 exports.getEndUserById = async (req, res) => {
   try {
     if (!ObjectId.isValid(req.params.id)) {

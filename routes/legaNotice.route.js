@@ -13,9 +13,7 @@ module.exports = (app) => {
         LegalController.getLegalById
     );
     app.get(
-        "/api/v1/admin/legal/legalNotices",
-
-        LegalController.getLegal
+        "/api/v1/admin/legal/legalNotices",LegalController.getLegal
     );
     app.delete(
         "/api/v1/admin/legal/legalNotices/:id",
