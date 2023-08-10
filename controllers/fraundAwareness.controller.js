@@ -50,7 +50,7 @@ exports.getById = async (req, res) => {
     }
     const result = await FraudModel.findById(req.params.id);
 
-    if (result.length === 0) {
+    if (!result) {
       res.status(200).json({
         message: "no fraud awareness message added",
       });
